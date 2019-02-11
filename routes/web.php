@@ -30,12 +30,15 @@ Route::group(['prefix' => 'slider'], function (){
 });
 
 
-Route::group(['prefix' => 'news'], function (){
-    Route::get('/','NewsController@index')->middleware('verify_permissions')->name('news');
-    Route::get('/get_types','NewsController@load')->name('get_news');
-    Route::post('change_status','NewsController@change_status')->name('change_status_news');
-    Route::post('/save','NewsController@save')->name('news_save');
-    Route::get('/detail/{id?}','NewsController@detail')->middleware('verify_permissions')->name('news_detail');
+Route::group(['prefix' => 'posts'], function (){
+    Route::get('/search','PostController@search')->middleware('verify_permissions')->name('post_search');
+    Route::get('/search_tag','PostController@post_tag')->middleware('verify_permissions')->name('post_tag');
+    Route::get('/','PostController@index')->middleware('verify_permissions')->name('posts');
+    Route::get('/get_types','PostController@load')->name('get_post');
+    Route::get('/detail/{id?}','PostController@detail')->middleware('verify_permissions')->name('post_detail');
+    Route::post('/save','PostController@save')->name('post_save');
+    Route::post('change_status','PostController@change_status')->name('change_status_post');
+    Route::post('/save_tags','PostController@save_tags')->name('save_tags');
 });
 
 

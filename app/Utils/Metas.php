@@ -20,13 +20,10 @@ class Metas {
         return Meta::where(array("object_id"=>$object,"type"=>$type_object))->first();
     }
     
-    public static function save($input,$file,$type_object,$object,$user){
+    public static function save($input,$file,$type_object,$object){
         $meta = Meta::where(array("object_id"=>$object,"type"=>$type_object))->first();
         if(!$meta){
             $meta = new Meta();
-            $meta->created_by = $user;
-        }else{
-            $meta->updated_by = $user;
         }
         $meta->object_id = $object;
         $meta->type = $type_object;
@@ -42,8 +39,8 @@ class Metas {
         $image = $file;
         $meta->save();
         if(!is_null($image)){
-            $path = imageUploader::upload_s3($meta,$image,"meta");
-            $meta->path = $path;
+            $path = imageUploader::upload($meta,$image,"meta");
+            $meta->image = $path;
             $meta->save();
         }   
     }

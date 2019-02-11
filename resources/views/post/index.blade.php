@@ -16,6 +16,7 @@
         var open = true;
         swal({
             title: 'Cargando...',
+            text: '',
             showCancelButton: false,
             showConfirmButton: false,
             onOpen: function () {
@@ -27,8 +28,8 @@
             var dataTable = $('#user').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ route('get_slider')}}",
-                order: [[0, "asc"]],
+                "ajax": "{{ route('get_post')}}",
+                order: [[0, "desc"]],
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ Entradas",
                     "zeroRecords": "No se encontraron registros",
@@ -45,11 +46,12 @@
                         "previous": "Anterior"
                     },
                 },
+                rowReorder: true,
                 "columns": [
                     {data: 'id', name: 'id'},
                     {data: 'title', name: 'title'},
                     {data: 'created_at', name: 'created_at'},
-                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'updated_at', name: 'updated_at'}
                 ],
                 "columnDefs": [
                     {
@@ -77,7 +79,9 @@
                         "aTargets": [5],
                         "mData": null,
                         "mRender": function (data, type, full) {
-                            return '<a href="{{url("slider/detail")}}/' + full.id + '" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Editar</a>';
+                            content ='<a href="{{url("posts/detail")}}/' + full.id + '" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Editar</a>';
+                            return content;
+
                         }
 
                     }
@@ -97,7 +101,7 @@
                                 $.ajax({
                                     type: "POST",
                                     dataType: "JSON",
-                                    url: "{{route('change_status_slider')}}",
+                                    url: "{{route('change_status_post')}}",
                                     headers: { 'X-CSRF-TOKEN': $('input[name=_token]').val() },
                                     data: {
                                         id: id,
@@ -107,7 +111,7 @@
                                         open = false;
                                         swal({
                                             title: 'Cargando...',
-                                            timer: 1000,
+                                            timer: 10000,
                                             showCancelButton: false,
                                             showConfirmButton: false,
                                             onOpen: function () {
@@ -117,7 +121,6 @@
 
                                     },
                                     success: function (data) {
-                                        swal.close();
                                         dataTable.ajax.reload();
                                     }
                                 });
@@ -128,14 +131,13 @@
 
                 }
             });
-
             $("#user").on( 'search.dt', function () {
                 setTimeout(function(){
                         if(open) {
                             open = false;
                             swal({
                                 title: 'Cargando...',
-                                timer: 1000,
+                                timer: 10000,
                                 showCancelButton: false,
                                 showConfirmButton: false,
                                 onOpen: function () {
@@ -159,7 +161,7 @@
         <div class="col-xs-12">
             <div class="portlet light portlet-fit portlet-datatable bordered">
                 <div class="portlet-title">
-                    <a href="{{route('slider_detail')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Nuevo</a>
+                    <a href="{{route('post_detail')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Nuevo</a>
                     <div class="tools"> </div>
                 </div>
                 <div class="portlet-body">

@@ -36,7 +36,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary pull-right">Insertar</a>
+                <a type="submit" class="btn btn-primary pull-right">Insertar</a>
             </div>
             </form>
         </div>
