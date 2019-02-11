@@ -40,7 +40,7 @@ class Metas {
         $meta->save();
         if(!is_null($image)){
             $path = imageUploader::upload($meta,$image,"meta");
-            $meta->image = $path;
+            $meta->path = $path;
             $meta->save();
         }   
     }
