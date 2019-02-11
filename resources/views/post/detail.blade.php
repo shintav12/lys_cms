@@ -176,7 +176,7 @@
                 minimumInputLength: 2,
                 placeholder: "Busque un tag",
                 ajax: {
-                    url: "{{ url('post/search_tag')}}",
+                    url: "{{ url('posts/search_tag')}}",
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
