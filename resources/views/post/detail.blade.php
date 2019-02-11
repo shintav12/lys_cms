@@ -365,19 +365,6 @@
                             <div class="tab-pane active" id="tab_1_1">
                                 <input hidden name="id" value="<?php if( isset($item) )  echo $item->id; else echo 0;?>" />
                                 <div class="row form-body">
-                                    <?php if(isset($item)){?>
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-12">
-                                                        <?php if($item->status == 0){?>
-                                                            <a class="btn btn-primary" target="_blank" href="http://www.ligaprogaming.com/noticias/{{$game->slug}}/{{$item->slug}}?preview=true" >Previsualizar</a>
-                                                        <?php }?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php }?>
                                     <div class="col-xs-12">
                                         <div class="form-group">
                                             <div class="col-xs-12">
