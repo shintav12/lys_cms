@@ -154,7 +154,7 @@ class PostController extends BaseController
                 if(!is_null($image)){
                     $post_image_type = Image::where("object_id",$post->id)->where("object_type","post")
                         ->where("image_type",$image_type->id)->first();
-                    if(!is_null($post_image_type)){
+                    if(is_null($post_image_type)){
                         $post_image_type = new Image();
                         $post_image_type->object_id = $post->id;
                         $post_image_type->object_type = "post";
