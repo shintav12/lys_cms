@@ -122,7 +122,7 @@
                 language: 'es',
                 <?php if(isset($item)){?>
                 initialPreview: [
-                   "<?php echo config('app.path_url').'meta/'.$item->id.'/'.$item->path.'?v='.strtotime($item->updated_at) ?>",
+                   "<?php echo config('app.path_url').$meta->path.'?v='.strtotime($item->updated_at) ?>",
                 ]
                 <?php }?>
             });
@@ -140,7 +140,7 @@
                 language: 'es',
                 <?php if(isset($item)){?>
                 initialPreview: [
-                    "<?php echo config('app.path_url').'post/'.$item->id.'/'.$item->path.'?v='.strtotime($item->updated_at) ?>",
+                    "<?php echo config('app.path_url').$item->image.'?v='.strtotime($item->updated_at) ?>",
                 ]
                 <?php }?>
             });
@@ -167,7 +167,7 @@
                     if(!is_null($image)){
                     ?>
                     initialPreview: [
-                        "<?php echo config('app.path_url').'images/'.$image->id.'/'.$image->path.'?v='.strtotime($image->updated_at) ?>",
+                        "<?php echo config('app.path_url').$image->image.'?v='.strtotime($image->updated_at) ?>",
                     ]
                 <?php }}?>
                 });
