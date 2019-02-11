@@ -90,7 +90,7 @@ class PostController extends BaseController
         if($id != 0){
             $post = Post::find($id);
             $images = Image::where('object_id',$post->id)->where("type","post")->get();
-            $post->description = json_decode($post->description);
+            $post->description = json_decode($post->content);
             $tags = DB::select("select t.id, t.name from tags t join object_tag pt on pt.tag_id = t.id where pt.object_type = 'post'  and pt.object_id = ".$id);
             $template['item'] = $post;
             $template["meta"] = Metas::get("post", $post->id);
@@ -127,7 +127,7 @@ class PostController extends BaseController
             }
             $post->title = $title;
             $description = str_replace('"', "'", $description);
-            $post->description = json_encode($description);
+            $post->content = json_encode($description);
             $path = sprintf("http://www.karellyscosta.com/posts/%s",$post->slug);
             $data = file_get_contents('http://tinyurl.com/api-create.php?url='.$path);
             $post->tiny_url = $data;
