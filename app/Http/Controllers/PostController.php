@@ -89,7 +89,7 @@ class PostController extends BaseController
 
         if($id != 0){
             $post = Post::find($id);
-            $images = Image::where('object_id',$post->id)->where("type","post")->get();
+            $images = Image::where('object_id',$post->id)->where("object_type","post")->get();
             $post->description = json_decode($post->content);
             $tags = DB::select("select t.id, t.name from tags t join object_tag pt on pt.tag_id = t.id where pt.object_type = 'post'  and pt.object_id = ".$id);
             $template['item'] = $post;
