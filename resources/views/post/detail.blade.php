@@ -120,7 +120,7 @@
                 maxFileSize: 300,
                 initialPreviewAsData: true,
                 language: 'es',
-                <?php if(isset($item)){?>
+                <?php if(isset($meta)){?>
                 initialPreview: [
                    "<?php echo config('app.path_url').$meta->path.'?v='.strtotime($item->updated_at) ?>",
                 ]
