@@ -41,6 +41,17 @@ Route::group(['prefix' => 'posts'], function (){
     Route::post('/save_tags','PostController@save_tags')->name('save_tags');
 });
 
+Route::group(['prefix' => 'videos'], function (){
+    Route::get('/search','VideoController@search')->middleware('verify_permissions')->name('video_search');
+    Route::get('/search_tag','VideoController@post_tag')->middleware('verify_permissions')->name('video_tag');
+    Route::get('/','VideoController@index')->middleware('verify_permissions')->name('videos');
+    Route::get('/get_types','VideoController@load')->name('get_videos');
+    Route::get('/detail/{id?}','VideoController@detail')->middleware('verify_permissions')->name('video_detail');
+    Route::post('/save','VideoController@save')->name('video_save');
+    Route::post('change_status','VideoController@change_status')->name('change_status_video');
+    Route::post('/save_tags','VideoController@save_tags')->name('save_video_tags');
+});
+
 
 Route::group(['prefix' => 'social_media'], function (){
     Route::get('/','SocialMediaController@index')->middleware('verify_permissions')->name('social_media');
