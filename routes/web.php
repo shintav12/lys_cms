@@ -52,6 +52,11 @@ Route::group(['prefix' => 'videos'], function (){
     Route::post('/save_tags','VideoController@save_tags')->name('save_video_tags');
 });
 
+Route::group(['prefix' => 'editor_images'], function (){
+    Route::post('upload','EditorImagesController@save')->name('upload_images');
+    Route::get('search','EditorImagesController@search')->name('search_images');
+});
+
 Route::group(['prefix' => 'frebies'], function (){
     Route::get('/search','FrebieController@search')->middleware('verify_permissions')->name('frebie_search');
     Route::get('/search_tag','FrebieController@post_tag')->middleware('verify_permissions')->name('post_tag');

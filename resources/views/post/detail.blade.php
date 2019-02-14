@@ -269,6 +269,30 @@
 
                 }
             });
+            $("#gallery_file").fileinput({
+                allowedFileExtensions: ["jpg"],
+                uploadAsync: false,
+                showUpload: false, // hide upload button
+                showRemove: false,
+                maxFileSize: 300,
+                initialPreviewAsData: true,
+                language: 'es',
+            });
+
+            $("#open_gallery").click(function(){
+                $(this).gallery({
+                    cdn: "<?php echo config('app.path_url') ?>",
+                    process : "<?php echo route('upload_images') ?>",
+                    search : "<?php echo route('search_images') ?>",
+                    callback: getImage
+                });
+            });
+            function getImage(url){
+                var summernoteValue = $("#description").summernote('code');
+                summernoteValue += url;
+                $("#description").summernote('code',summernoteValue);
+            }
+
             $("#form-tags").validate({
                 errorPlacement: function errorPlacement(error, element) {
                     element.after(error);
@@ -395,6 +419,15 @@
                                             {{--</div>--}}
                                         {{--</div>--}}
                                     {{--</div>--}}
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-12">
+                                                    <a href="#" id="open_gallery" class="btn btn-primary pull-right">Abrir Galería</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                      <div class="col-xs-12">
                                         <div class="form-group">
                                             <div class="col-xs-12">
