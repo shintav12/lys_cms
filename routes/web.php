@@ -52,6 +52,12 @@ Route::group(['prefix' => 'videos'], function (){
     Route::post('/save_tags','VideoController@save_tags')->name('save_video_tags');
 });
 
+Route::group(['prefix' => 'phrases'], function (){
+    Route::get('/','PhraseController@index')->middleware('verify_permissions')->name('phrases');
+    Route::get('/get_types','PhraseController@load')->name('get_phrases');
+    Route::post('/save','PhraseController@save')->name('phrase_save');
+    Route::get('/detail/{id?}','PhraseController@detail')->middleware('verify_permissions')->name('phrase_detail');
+});
 
 Route::group(['prefix' => 'social_media'], function (){
     Route::get('/','SocialMediaController@index')->middleware('verify_permissions')->name('social_media');
