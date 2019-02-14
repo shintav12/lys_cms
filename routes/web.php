@@ -52,6 +52,17 @@ Route::group(['prefix' => 'videos'], function (){
     Route::post('/save_tags','VideoController@save_tags')->name('save_video_tags');
 });
 
+Route::group(['prefix' => 'frebies'], function (){
+    Route::get('/search','FrebieController@search')->middleware('verify_permissions')->name('frebie_search');
+    Route::get('/search_tag','FrebieController@post_tag')->middleware('verify_permissions')->name('post_tag');
+    Route::get('/','FrebieController@index')->middleware('verify_permissions')->name('frebies');
+    Route::get('/get_types','FrebieController@load')->name('get_frebies');
+    Route::get('/detail/{id?}','FrebieController@detail')->middleware('verify_permissions')->name('frebie_detail');
+    Route::post('/save','FrebieController@save')->name('frebie_save');
+    Route::post('change_status','FrebieController@change_status')->name('change_status_frebie');
+    Route::post('/save_tags','FrebieController@save_tags')->name('save_tags');
+});
+
 Route::group(['prefix' => 'phrases'], function (){
     Route::get('/','PhraseController@index')->middleware('verify_permissions')->name('phrases');
     Route::get('/get_types','PhraseController@load')->name('get_phrases');
