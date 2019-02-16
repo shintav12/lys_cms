@@ -95,7 +95,7 @@ class PostController extends BaseController
             $template['item'] = $post;
             $template["meta"] = Metas::get("post", $post->id);
             $template["tags"] = $tags;
-            $template["images"] = $images;
+            $template["images"] = DB::select(DB::raw("select * from images where object_id =". $post->id ." and object_type = 'post'"));;
         }
 
         return view('post.detail',$template);
@@ -152,14 +152,16 @@ class PostController extends BaseController
             foreach ($image_types as $image_type){
                 $image = $request->file($image_type->name);
                 if(!is_null($image)){
-                    $post_image_type = Image::where("object_id",$post->id)->where("object_type","post")
-                        ->where("image_type",$image_type->id)->first();
-                    if(is_null($post_image_type)){
+                    $post_image_type = DB::select(DB::raw("select * from images where object_id =". $post->id ." and object_type = 'post' and image_type = ". $image_type->id . " limit 1"));
+                    if(count($post_image_type ) == 0){
                         $post_image_type = new Image();
                         $post_image_type->object_id = $post->id;
                         $post_image_type->object_type = "post";
                         $post_image_type->image_type = $image_type->id;
                         $post_image_type->save();
+                    }
+                    else{
+                        $post_image_type = $post_image_type[0];
                     }
                     $path = imageUploader::upload($post_image_type,$image,"images");
                     $post_image_type->image = $path;

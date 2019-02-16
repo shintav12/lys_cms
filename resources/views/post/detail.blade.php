@@ -147,8 +147,8 @@
             $('body').on('click','.delete',function(){
                 $(this).parent().parent().remove();
             });
-            <?php foreach($image_types as $image_type){ ?>
-                $("#{{$image_type->name}}").fileinput({
+            <?php foreach($image_types as $key => $value){ ?>
+                $("#{{$value->name}}").fileinput({
                     allowedFileExtensions: ["jpg"],
                     uploadAsync: false,
                     showUpload: false, // hide upload button
@@ -156,20 +156,11 @@
                     initialPreviewAsData: true,
                     maxFileSize: 300,
                     language: 'es',
-                <?php if(isset($images)){
-                    $image = null;
-                    foreach($images as $image) {
-                        if ($image_type->id == $image->type_id) {
-                            $item = $image;
-                            break;
-                        }
-                    }
-                    if(!is_null($image)){
-                    ?>
+                <?php if(isset($images) && is_array($images)){ ?>
                     initialPreview: [
-                        "<?php echo config('app.path_url').$image->image.'?v='.strtotime($image->updated_at) ?>",
+                        "<?php echo config('app.path_url').$images[$key]->image.'?v='.strtotime($images[$key]->updated_at) ?>",
                     ]
-                <?php }}?>
+                <?php }?>
                 });
             <?php }?>
             $("#tag_id").select2({
