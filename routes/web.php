@@ -68,6 +68,28 @@ Route::group(['prefix' => 'frebies'], function (){
     Route::post('/save_tags','FrebieController@save_tags')->name('save_tags');
 });
 
+Route::group(['prefix' => 'categories'], function (){
+    Route::get('/search','CategoryController@search')->middleware('verify_permissions')->name('categories_search');
+    Route::get('/search_tag','CategoryController@post_tag')->middleware('verify_permissions')->name('post_tag');
+    Route::get('/','CategoryController@index')->middleware('verify_permissions')->name('categories');
+    Route::get('/get_types','CategoryController@load')->name('get_categories');
+    Route::get('/detail/{id?}','CategoryController@detail')->middleware('verify_permissions')->name('category_detail');
+    Route::post('/save','CategoryController@save')->name('category_save');
+    Route::post('change_status','CategoryController@change_status')->name('change_status_category');
+    Route::post('/save_tags','CategoryController@save_tags')->name('save_tags');
+});
+
+Route::group(['prefix' => 'products'], function (){
+    Route::get('/search','ProductController@search')->middleware('verify_permissions')->name('products_search');
+    Route::get('/search_tag','ProductController@post_tag')->middleware('verify_permissions')->name('post_tag');
+    Route::get('/','ProductController@index')->middleware('verify_permissions')->name('products');
+    Route::get('/get_types','ProductController@load')->name('get_products');
+    Route::get('/detail/{id?}','ProductController@detail')->middleware('verify_permissions')->name('product_detail');
+    Route::post('/save','ProductController@save')->name('product_save');
+    Route::post('change_status','ProductController@change_status')->name('change_status_product');
+    Route::post('/save_tags','ProductController@save_tags')->name('save_tags');
+});
+
 Route::group(['prefix' => 'phrases'], function (){
     Route::get('/','PhraseController@index')->middleware('verify_permissions')->name('phrases');
     Route::get('/get_types','PhraseController@load')->name('get_phrases');

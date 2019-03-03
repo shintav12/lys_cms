@@ -11,10 +11,10 @@
     <link href="{{asset("assets/global/css/components.min.css")}}" rel="stylesheet" id="style_components" type="text/css" />
     <link href="{{asset("css/login-4.css")}}" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico" /> </head>
-<body class="login" style="background: url({{asset('img/bg.jpg')}}) no-repeat center; background-size: cover; background-color: black !important;">
+<body class="login" style="background: #ffc107 !important;">
 <div class="logo">
     <a href="index.html">
-        <img src="{{asset("img/logo-module.png")}}" alt="" />
+        <img src="{{asset("img/logo.png")}}" alt="" />
     </a>
 </div>
 <div class="content" style="padding-top: 40px;">
@@ -50,7 +50,7 @@
     </form>
 </div>
 
-<div class="copyright"> <strong>Copyright &copy; 2018 <a style="color:#bf0811;" href="http://www.masuno.pe/" target="_blank">Más Uno S.A.C </a>.</strong> All rights reserved. </div>
+<div class="copyright"> <strong>Copyright &copy; 2019 <a style="color:#bf0811;" href="http://www.nezkastudio.com/" target="_blank">Nezka Studio </a>.</strong> All rights reserved. </div>
 
 <script src="{{asset("assets/global/plugins/jquery.min.js")}}" type="text/javascript"></script>
 <script src="{{asset("assets/global/plugins/bootstrap/js/bootstrap.min.js")}}" type="text/javascript"></script>
