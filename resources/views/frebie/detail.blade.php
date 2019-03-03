@@ -149,13 +149,8 @@
                 <?php }?>
             });
             $("#input-24").fileinput({
-                allowedFileExtensions: ["jpg"],
-                maxImageHeight: 630,
-                minImageHeight: 630,
-                maxImageWidth:  1200,
-                minImageWidth: 1200,
                 uploadAsync: false,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 showUpload: false, // hide upload button
                 showRemove: false,
                 initialPreviewAsData: true,

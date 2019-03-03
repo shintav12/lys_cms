@@ -129,7 +129,7 @@ class FrebieController extends BaseController
             $frebie->title = $title;
             $description = str_replace('"', "'", $description);
             $frebie->content = json_encode($description);
-            $path = sprintf("http://www.karellyscosta.com/frebies/%s",$frebie->slug);
+            $path = sprintf("http://www.karellyscosta.com/freebies/%s",$frebie->slug);
             $data = file_get_contents('http://tinyurl.com/api-create.php?url='.$path);
             $frebie->tiny_url = $data;
             $frebie->save();

@@ -106,6 +106,7 @@ class PostController extends BaseController
             $id = Input::get('id');
             $image_types = ImageType::get();
             $description = Input::get('description');
+            $subtitle = Input::get('subtitle');
             $description = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $description);
             $matches = [];
             preg_match_all("/<\s*p[^>]*>([^<]*)<\s*\/\s*p\s*>/", $description,$matches);
@@ -126,6 +127,7 @@ class PostController extends BaseController
                 $post->slug = $post->get_slug($title,$post->getTable());
             }
             $post->title = $title;
+            $post->subtitle = $subtitle;
             $description = str_replace('"', "'", $description);
             $post->content = json_encode($description);
             $path = sprintf("http://www.karellyscosta.com/posts/%s",$post->slug);

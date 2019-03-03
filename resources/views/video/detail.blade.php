@@ -99,9 +99,9 @@
                 }
             });
             <?php if(isset($item)){
-                $item->content = str_replace('"', "'", $item->content);
+                $item->text = str_replace('"', "'", $item->text);
                 ?>
-                $('#description').summernote("code","<?php echo $item->content ?>");
+                $('#description').summernote("code","<?php echo $item->text ?>");
                 <?php
             } ?>
 
@@ -135,11 +135,7 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxImageHeight: 630,
-                minImageHeight: 630,
-                maxImageWidth:  1200,
-                minImageWidth: 1200,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
                 <?php if(isset($meta)){?>
@@ -150,12 +146,8 @@
             });
             $("#input-24").fileinput({
                 allowedFileExtensions: ["jpg"],
-                maxImageHeight: 630,
-                minImageHeight: 630,
-                maxImageWidth:  1200,
-                minImageWidth: 1200,
                 uploadAsync: false,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 showUpload: false, // hide upload button
                 showRemove: false,
                 initialPreviewAsData: true,
@@ -393,6 +385,16 @@
                                                 <div class="col-xs-12">
                                                     <label>Título</label>
                                                     <input type="text" class="form-control" name="title" maxlength="200" value="<?php if( isset($item) )  echo $item->title;?>" placeholder="Ingrese el nombre del programa">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-12">
+                                                    <label>Subtitulo</label>
+                                                    <input type="text" class="form-control" name="subtitle" maxlength="200" value="<?php if( isset($item) )  echo $item->subtitle;?>" placeholder="Ingrese el nombre del programa">
                                                 </div>
                                             </div>
                                         </div>

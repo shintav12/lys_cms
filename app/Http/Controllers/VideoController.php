@@ -88,7 +88,7 @@ class VideoController extends BaseController
         );
 
         if($id != 0){
-            $video = Post::find($id);
+            $video = Video::find($id);
             $images = Image::where('object_id',$video->id)->where("object_type","video")->get();
             $video->text = json_decode($video->text);
             $video->video = json_decode($video->video);
@@ -108,6 +108,7 @@ class VideoController extends BaseController
             $video_code = Input::get('video');
             $image_types = ImageType::get();
             $description = Input::get('description');
+            $subtitle = Input::get('subtitle');
             $description = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $description);
             $matches = [];
             preg_match_all("/<\s*p[^>]*>([^<]*)<\s*\/\s*p\s*>/", $description,$matches);
@@ -120,14 +121,15 @@ class VideoController extends BaseController
             $tags = Input::get('tag_id');
 
             if($id != 0) {
-                $video = Post::find($id);
+                $video = Video::find($id);
             }
             else{
                 $video  = new Video();
                 $video->status = 0;
-                $video->slug = $post->get_slug($title,$video->getTable());
+                $video->slug = $video->get_slug($title,$video->getTable());
             }
             $video->title = $title;
+            $video->subtitle = $subtitle;
             $description = str_replace('"', "'", $description);
             $video->text = json_encode($description);
             $video->video = json_encode($video_code);
@@ -141,11 +143,11 @@ class VideoController extends BaseController
                 $video->save();
             }
 
-            ObjectTag::where('object_id',$post->id)->where("object_type","video")->delete();
+            ObjectTag::where('object_id',$video->id)->where("object_type","video")->delete();
             if(is_array($tags)){
                 foreach($tags as $tag){
                     $video_tag = new ObjectTag();
-                    $video_tag->object_id = $post->id;
+                    $video_tag->object_id = $video->id;
                     $video_tag->object_type = "video";
                     $video_tag->tag_id = intval($tag);
                     $video_tag->save();
@@ -157,9 +159,9 @@ class VideoController extends BaseController
                 if(!is_null($image)){
                     $video_image_type = Image::where("object_id",$video->id)->where("object_type","video")
                         ->where("image_type",$image_type->id)->first();
-                    if(is_null($post_image_type)){
+                    if(is_null($video_image_type)){
                         $video_image_type = new Image();
-                        $video_image_type->object_id = $post->id;
+                        $video_image_type->object_id = $video->id;
                         $video_image_type->object_type = "video";
                         $video_image_type->image_type = $image_type->id;
                         $video_image_type->save();
