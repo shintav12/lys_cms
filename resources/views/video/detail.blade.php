@@ -99,7 +99,7 @@
                 }
             });
             <?php if(isset($item)){
-                $item->text = str_replace('"', "'", $item->text);
+                $item->text = str_replace('"', " ", $item->text);
                 ?>
                 $('#description').summernote("code","<?php echo $item->text ?>");
                 <?php
