@@ -21,6 +21,7 @@ class imageUploader extends Model
             mkdir($destino_ftp, 0777, TRUE);
         }
         $file_path = sprintf("%s/%s", $destino_ftp, $imageFileName);
+        @chmod($file_path , 0755);
         if (file_exists($file_path)) {
             @unlink($file_path);
         }
