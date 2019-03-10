@@ -16,12 +16,12 @@ class imageUploader extends Model
             $imageFileName = sprintf("%d.%s",$model->id,$extension);
 
         $destino_ftp= sprintf("%s/%s/%s", config('app.path_archive'), $folder, $model->id);	
-        @chmod($destino_ftp , 0755);
+        @chmod($destino_ftp , 0777);
         if (!file_exists($destino_ftp)) {
             mkdir($destino_ftp, 0777, TRUE);
         }
         $file_path = sprintf("%s/%s", $destino_ftp, $imageFileName);
-        @chmod($file_path , 0755);
+        @chmod($file_path , 0777);
         if (file_exists($file_path)) {
             @unlink($file_path);
         }
