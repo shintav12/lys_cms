@@ -163,7 +163,7 @@ class PostController extends BaseController
                         $post_image_type->save();
                     }
                     else{
-                        $post_image_type = $post_image_type[0];
+                        $post_image_type = $post_image_type;
                     }
                     $path = imageUploader::upload($post_image_type,$image,"images");
                     $post_image_type->image = $path;

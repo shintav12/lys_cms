@@ -150,7 +150,7 @@
                     showUpload: false, // hide upload button
                     showRemove: false,
                     initialPreviewAsData: true,
-                    maxFileSize: 300,
+                    maxFileSize: 400,
                     language: 'es',
                 <?php if(isset($images) && is_array($images)){ ?>
                     initialPreview: [
@@ -261,7 +261,7 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
             });

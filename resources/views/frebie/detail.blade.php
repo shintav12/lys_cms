@@ -64,7 +64,7 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
             });
@@ -135,11 +135,7 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxImageHeight: 630,
-                minImageHeight: 630,
-                maxImageWidth:  1200,
-                minImageWidth: 1200,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
                 <?php if(isset($meta)){?>
@@ -185,7 +181,7 @@
                     showUpload: false, // hide upload button
                     showRemove: false,
                     initialPreviewAsData: true,
-                    maxFileSize: 300,
+                    maxFileSize: 400,
                     language: 'es',
                 <?php if(isset($images)){
                     $image = null;

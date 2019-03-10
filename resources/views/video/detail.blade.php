@@ -64,7 +64,7 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxFileSize: 300,
+                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
             });
@@ -83,7 +83,7 @@
                 $("#description").summernote('code',summernoteValue);
             }
             $('#description').summernote({
-                height: 300,
+                height: 400,
                 toolbar: [
                     ['style', ['bold', 'italic', 'underline', 'clear','style']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -168,7 +168,7 @@
                     showUpload: false, // hide upload button
                     showRemove: false,
                     initialPreviewAsData: true,
-                    maxFileSize: 300,
+                    maxFileSize: 400,
                     language: 'es',
                 <?php if(isset($images)){
                     $image = null;
