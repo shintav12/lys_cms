@@ -64,7 +64,6 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
             });
@@ -135,7 +134,6 @@
                 uploadAsync: false,
                 showUpload: false, // hide upload button
                 showRemove: false,
-                maxFileSize: 400,
                 initialPreviewAsData: true,
                 language: 'es',
                 <?php if(isset($meta)){?>
@@ -147,7 +145,6 @@
             $("#input-24").fileinput({
                 allowedFileExtensions: ["jpg"],
                 uploadAsync: false,
-                maxFileSize: 400,
                 showUpload: false, // hide upload button
                 showRemove: false,
                 initialPreviewAsData: true,
@@ -169,7 +166,6 @@
                     showUpload: false, // hide upload button
                     showRemove: false,
                     initialPreviewAsData: true,
-                    maxFileSize: 400,
                     language: 'es',
                 <?php if(isset($images)){
                     $image = null;
@@ -361,7 +357,6 @@
                 <div class="portlet-body form">
                     <form class="form-horizontal" role="form" id="form-user" enctype="multipart/form-data">
                         {{csrf_field()}}
-
                         <ul class="nav nav-tabs">
                             <li id="tab_li_1" class="tab-trigger active">
                                 <a id="tab_1" href="#tab_1_1" data-toggle="tab"> General </a>
@@ -386,6 +381,16 @@
                                                 <div class="col-xs-12">
                                                     <label>Título</label>
                                                     <input type="text" class="form-control" name="title" maxlength="200" value="<?php if( isset($item) )  echo $item->title;?>" placeholder="Ingrese el nombre del programa">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-12">
+                                                    <label>Amazon URL</label>
+                                                    <input type="text" class="form-control" name="link_amazon" maxlength="600" value="<?php if( isset($item) )  echo $item->link_amazon;?>" placeholder="Ingrese el nombre del programa">
                                                 </div>
                                             </div>
                                         </div>
@@ -570,7 +575,7 @@
                                 <div class="col-xs-12">
                                     <div class="col-md-3 col-md-9">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <a type="button" href="{{route("`products`")}}" class="btn default">Cancel</a>
+                                        <a type="button" href="{{route('products')}}" class="btn default">Cancel</a>
                                     </div>
                                 </div>
                             </div>

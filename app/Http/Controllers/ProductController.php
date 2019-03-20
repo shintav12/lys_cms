@@ -114,6 +114,7 @@ class ProductController extends BaseController
                 $description = "<p>".$description."</p>";
             }
             $title = Input::get('title');
+            $link_amazon = Input::get('link_amazon');
             $image = $request->file('file_post');
             $tags = Input::get('tag_id');
 
@@ -126,9 +127,10 @@ class ProductController extends BaseController
                 $product->slug = $product->get_slug($title,$product->getTable());
             }
             $product->title = $title;
+            $product->link_amazon = $link_amazon;
             $description = str_replace('"', "'", $description);
             $product->content = json_encode($description);
-            $path = sprintf("http://www.karellyscosta.com/frebies/%s",$product->slug);
+            $path = sprintf("http://www.karellyscosta.com/store/%s",$product->slug);
             $data = file_get_contents('http://tinyurl.com/api-create.php?url='.$path);
             $product->tiny_url = $data;
             $product->save();

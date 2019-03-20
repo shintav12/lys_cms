@@ -161,7 +161,7 @@
         <div class="col-xs-12">
             <div class="portlet light portlet-fit portlet-datatable bordered">
                 <div class="portlet-title">
-                    <a href="{{route('frebie_detail')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Nuevo</a>
+                    <a href="{{route('product_detail')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Nuevo</a>
                     <div class="tools"> </div>
                 </div>
                 <div class="portlet-body">
