@@ -4,5 +4,5 @@ namespace App\Models;
 
 class Product extends BaseModel
 {
-    protected $table = "categories";
+    protected $table = "products";
 }

@@ -119,7 +119,7 @@ class ProductController extends BaseController
             $tags = Input::get('tag_id');
 
             if($id != 0) {
-                $product = Frebie::find($id);
+                $product = Product::find($id);
             }
             else{
                 $product  = new Product();
@@ -145,7 +145,7 @@ class ProductController extends BaseController
                 foreach($tags as $tag){
                     $post_tag = new ObjectTag();
                     $post_tag->object_id = $product->id;
-                    $post_tag->object_type = "frebie";
+                    $post_tag->object_type = "product";
                     $post_tag->tag_id = intval($tag);
                     $post_tag->save();
                 }

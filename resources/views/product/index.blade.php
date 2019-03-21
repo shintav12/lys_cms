@@ -28,7 +28,7 @@
             var dataTable = $('#user').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ route('get_frebies')}}",
+                "ajax": "{{ route('get_products')}}",
                 order: [[0, "desc"]],
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ Entradas",

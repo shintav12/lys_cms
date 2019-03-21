@@ -154,7 +154,7 @@ class PostController extends BaseController
             foreach ($image_types as $image_type){
                 $image = $request->file($image_type->name);
                 if(!is_null($image)){
-                    $post_image_type = Image::where("object_id",$post->id)->where("object_type","poost")
+                    $post_image_type = Image::where("object_id",$post->id)->where("object_type","post")
                         ->where("image_type",$image_type->id)->first();
                     if(is_null($post_image_type)){
                         $post_image_type = new Image();
