@@ -93,7 +93,7 @@ class FrebieController extends BaseController
             $frebie->content = json_decode($frebie->content);
             $tags = DB::select("select t.id, t.name from tags t join object_tag pt on pt.tag_id = t.id where pt.object_type = 'frebie'  and pt.object_id = ".$id);
             $template['item'] = $frebie;
-            $template["meta"] = Metas::get("post", $frebie->id);
+            $template["meta"] = Metas::get("frebie", $frebie->id);
             $template["tags"] = $tags;
             $template["images"] = $images;
         }
