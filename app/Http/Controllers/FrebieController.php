@@ -81,7 +81,7 @@ class FrebieController extends BaseController
         $template = array(
             "menu_active" => "frebies",
             "smenu_active" => "",
-            "page_title" => "Post",
+            "page_title" => "Freebies",
             "page_subtitle" => ($id == 0 ? "Nuevo" : "Editar" ),
             "user" => session('user'),
             "image_types" => ImageType::get()
