@@ -396,6 +396,16 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-12">
+                                                    <label>Precio</label>
+                                                    <input type="text" class="form-control" name="price" maxlength="600" value="<?php if( isset($item) )  echo $item->price;?>" placeholder="Ingrese el nombre del programa">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
                                         <div class="form-group ">
                                             <div class="col-xs-12">
                                                 <div class="col-xs-12">

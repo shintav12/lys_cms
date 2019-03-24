@@ -115,6 +115,7 @@ class ProductController extends BaseController
             }
             $title = Input::get('title');
             $link_amazon = Input::get('link_amazon');
+            $price = Input::get('price');
             $image = $request->file('file_post');
             $tags = Input::get('tag_id');
 
@@ -128,6 +129,7 @@ class ProductController extends BaseController
             }
             $product->title = $title;
             $product->link_amazon = $link_amazon;
+            $product->price = $price;
             $description = str_replace('"', "'", $description);
             $product->content = json_encode($description);
             $path = sprintf("http://www.karellyscosta.com/store/%s",$product->slug);
