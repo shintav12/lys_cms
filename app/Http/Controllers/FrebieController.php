@@ -142,7 +142,7 @@ class FrebieController extends BaseController
             }
 
             if(!is_null($download)){
-                $path = imageUploader::upload($frebie,$image,"downloads");
+                $path = imageUploader::uploadFile($frebie,$download,"downloads");
                 $frebie->download = $path;
                 $frebie->save();
             }

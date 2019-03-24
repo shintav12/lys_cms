@@ -31,6 +31,29 @@ class imageUploader extends Model
         return $path;
     }
 
+    public static function uploadFile($model,$image,$folder,$type="none",$path="web_data"){
+        $extension = !is_string($image) ? $image->getClientOriginalExtension() : "zip";
+        if($type !== "none" && $type !== "")
+            $imageFileName = sprintf("%d_%s.%s",$model->id,$type,$extension);
+        else
+            $imageFileName = sprintf("%d.%s",$model->id,$extension);
+
+        $destino_ftp= sprintf("%s/%s/%s", config('app.path_archive'), $folder, $model->id);
+        @chmod($destino_ftp , 0777);
+        if (!file_exists($destino_ftp)) {
+            mkdir($destino_ftp, 0777, TRUE);
+        }
+        $file_path = sprintf("%s/%s", $destino_ftp, $imageFileName);
+        @chmod($file_path , 0777);
+        if (file_exists($file_path)) {
+            @unlink($file_path);
+        }
+        move_uploaded_file($image, $file_path);
+        $path =  sprintf("%s/%s/%s", $folder , $model->id  , $imageFileName);
+
+        return $path;
+    }
+
     // public static function upload_s3($model,$image,$folder,$type="none",$parent=null,$path="liga_gamer"){
     //     $amazon_bucket  = config('app.bucket');
     //     $amazon_keyname = config('app.keyname');
