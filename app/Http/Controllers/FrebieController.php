@@ -114,6 +114,7 @@ class FrebieController extends BaseController
                 $description = "<p>".$description."</p>";
             }
             $title = Input::get('title');
+            $subtitle = Input::get('subtitle');
             $image = $request->file('file_post');
             $download = $request->file('frebie_file');
             $tags = Input::get('tag_id');
@@ -127,6 +128,7 @@ class FrebieController extends BaseController
                 $frebie->slug = $frebie->get_slug($title,$frebie->getTable());
             }
             $frebie->title = $title;
+            $frebie->subtitle = $subtitle;
             $description = str_replace('"', "'", $description);
             $frebie->content = json_encode($description);
             $path = sprintf("http://www.karellyscosta.com/freebies/%s",$frebie->slug);

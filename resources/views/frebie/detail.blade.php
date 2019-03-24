@@ -256,7 +256,7 @@
                         $.ajax({
                             type: "POST",
                             dataType: "json",
-                            url: "{{ route('post_save') }}",
+                            url: "{{ route('frebie_save') }}",
                             data: new FormData($("#form-user")[0]),
                             contentType: false,
                             processData: false,
@@ -398,6 +398,16 @@
                                                 <div class="col-xs-12">
                                                     <label>Título</label>
                                                     <input type="text" class="form-control" name="title" maxlength="200" value="<?php if( isset($item) )  echo $item->title;?>" placeholder="Ingrese el nombre del programa">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-12">
+                                                    <label>Subtitulo</label>
+                                                    <input type="text" class="form-control" name="subtitle" maxlength="200" value="<?php if( isset($item) )  echo $item->subtitle;?>" placeholder="Ingrese el nombre del programa">
                                                 </div>
                                             </div>
                                         </div>
