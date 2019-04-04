@@ -488,7 +488,7 @@
                                             <?php foreach($image_types as $image_type){?>
                                                     <div class="form-group" style="padding-bottom:25px">
                                                         <div class="col-xs-12" style="padding-top:15px">
-                                                            <label>{{$image_type->name}} .jpg</label>
+                                                        <label><?php if($image_type->id == 1) echo ("ESTA NO VA EN EL CARROUSEL")?> {{$image_type->name}} .jpg</label>
                                                             <input id="<?php echo $image_type->name?>" class="input-fixed" name="<?php echo $image_type->name?>" type="file">
                                                         </div>
                                                     </div>
