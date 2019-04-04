@@ -168,17 +168,16 @@
                     showUpload: false, // hide upload button
                     showRemove: false,
                     initialPreviewAsData: true,
-                    maxFileSize: 400,
                     language: 'es',
                 <?php if(isset($images)){
-                    $image = null;
+                    $image_aux = null;
                     foreach($images as $image) {
-                        if ($image_type->id == $image->type_id) {
-                            $item = $image;
+                        if ($image_type->id == $image->image_type) {
+                            $image_aux = $image;
                             break;
                         }
                     }
-                    if(!is_null($image)){
+                    if(!is_null($image_aux)){
                     ?>
                     initialPreview: [
                         "<?php echo config('app.path_url').$image->image.'?v='.strtotime($image->updated_at) ?>",
