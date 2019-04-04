@@ -89,7 +89,7 @@ class ProductController extends BaseController
 
         if($id != 0){
             $product = Product::find($id);
-            $images = Image::where('object_id',$product->id)->where("object_type","product")->get();
+            $images = Image::where("object_type","product")->where('object_id',$product->id)->get();
             $product->content = json_decode($product->content);
             $tags = DB::select("select t.id, t.name from tags t join object_tag pt on pt.tag_id = t.id where pt.object_type = 'product'  and pt.object_id = ".$id);
             $template['item'] = $product;
