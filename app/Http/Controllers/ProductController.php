@@ -114,6 +114,7 @@ class ProductController extends BaseController
                 $description = "<p>".$description."</p>";
             }
             $title = Input::get('title');
+            $subtitle = Input::get('subtitle');
             $link_amazon = Input::get('link_amazon');
             $price = Input::get('price');
             $image = $request->file('file_post');
@@ -128,6 +129,7 @@ class ProductController extends BaseController
                 $product->slug = $product->get_slug($title,$product->getTable());
             }
             $product->title = $title;
+            $product->subtitle = $subtitle;
             $product->link_amazon = $link_amazon;
             $product->price = $price;
             $description = str_replace('"', "'", $description);
